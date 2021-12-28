@@ -1,0 +1,16 @@
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\bin\Debug\net5.0\GettingStarted.exe
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\bin\Debug\net5.0\GettingStarted.deps.json
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\bin\Debug\net5.0\GettingStarted.runtimeconfig.json
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\bin\Debug\net5.0\GettingStarted.runtimeconfig.dev.json
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\bin\Debug\net5.0\GettingStarted.dll
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\bin\Debug\net5.0\ref\GettingStarted.dll
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\bin\Debug\net5.0\GettingStarted.pdb
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\obj\Debug\net5.0\GettingStarted.csproj.AssemblyReference.cache
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\obj\Debug\net5.0\GettingStarted.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\obj\Debug\net5.0\GettingStarted.AssemblyInfoInputs.cache
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\obj\Debug\net5.0\GettingStarted.AssemblyInfo.cs
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\obj\Debug\net5.0\GettingStarted.csproj.CoreCompileInputs.cache
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\obj\Debug\net5.0\GettingStarted.dll
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\obj\Debug\net5.0\ref\GettingStarted.dll
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\obj\Debug\net5.0\GettingStarted.pdb
+C:\Users\gusta\source\repos\socket_programming_course\GettingStarted\obj\Debug\net5.0\GettingStarted.genruntimeconfig.cache
