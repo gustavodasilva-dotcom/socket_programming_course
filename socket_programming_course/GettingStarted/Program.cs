@@ -45,19 +45,36 @@ namespace GettingStarted
 
                 var buff = new byte[128];
 
-                /**
-                 * O método Receive() recebe informações através do socket (informações do cliente). Esse método recebe, como
-                 * parâmetro, um array de bytes -- que, nesse caso, funcionará como um parâmetro de tipo de referência. Ou seja,
-                 * o método irá preencher o array de bytes com os dados recebidos do cliente através do socket (os dados são
-                 * em binários).
-                 */
-                var numReceivedBytes = client.Receive(buff);
+                while (true)
+                {
+                    /**
+                     * O método Receive() recebe informações através do socket (informações do cliente). Esse método recebe, como
+                     * parâmetro, um array de bytes -- que, nesse caso, funcionará como um parâmetro de tipo de referência. Ou seja,
+                     * o método irá preencher o array de bytes com os dados recebidos do cliente através do socket (os dados são
+                     * em binários).
+                     */
+                    var numReceivedBytes = client.Receive(buff);
 
-                Console.WriteLine($"Número de bytes recebidos: {numReceivedBytes}");
+                    Console.WriteLine($"Número de bytes recebidos: {numReceivedBytes}");
 
-                var receivedText = Encoding.ASCII.GetString(buff, 0, numReceivedBytes);
+                    var receivedText = Encoding.ASCII.GetString(buff, 0, numReceivedBytes);
 
-                Console.WriteLine($"Dados recebidos: {receivedText}");
+                    Console.WriteLine($"Dados recebidos: {receivedText}");
+
+                    /**
+                     * Para enviar dados ao cliente, no client-side, utilizamos as informações instanciadas em client (o cliente que
+                     * fez a requisição) com o método Send(). Da mesma forma que recebemos informações do cliente em um array de bytes,
+                     * as informações que enviaremos ao cliente serão enviadas em um array de bytes.
+                     */
+                    client.Send(buff);
+
+                    if (receivedText.Equals("X"))
+                        break;
+
+                    Array.Clear(buff, 0, buff.Length);
+
+                    numReceivedBytes = 0;
+                }
             }
             catch (Exception e)
             {
