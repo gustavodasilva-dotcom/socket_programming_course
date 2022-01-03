@@ -1,0 +1,16 @@
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\bin\Debug\net5.0\SocketClientStarter.exe
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\bin\Debug\net5.0\SocketClientStarter.deps.json
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\bin\Debug\net5.0\SocketClientStarter.runtimeconfig.json
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\bin\Debug\net5.0\SocketClientStarter.runtimeconfig.dev.json
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\bin\Debug\net5.0\SocketClientStarter.dll
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\bin\Debug\net5.0\ref\SocketClientStarter.dll
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\bin\Debug\net5.0\SocketClientStarter.pdb
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\obj\Debug\net5.0\SocketClientStarter.csproj.AssemblyReference.cache
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\obj\Debug\net5.0\SocketClientStarter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\obj\Debug\net5.0\SocketClientStarter.AssemblyInfoInputs.cache
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\obj\Debug\net5.0\SocketClientStarter.AssemblyInfo.cs
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\obj\Debug\net5.0\SocketClientStarter.csproj.CoreCompileInputs.cache
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\obj\Debug\net5.0\SocketClientStarter.dll
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\obj\Debug\net5.0\ref\SocketClientStarter.dll
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\obj\Debug\net5.0\SocketClientStarter.pdb
+C:\Users\gusta\source\repos\socket_programming_course\SocketClientStarter\obj\Debug\net5.0\SocketClientStarter.genruntimeconfig.cache
