@@ -37,7 +37,7 @@ namespace SocketClientStarter
 
                 client.Connect(iPAddress, port);
 
-                Console.WriteLine("Conexão estabelecida. Pressione <exit> para sair.");
+                Console.WriteLine("Conexão estabelecida. Digite <exit> ou X para sair.");
 
                 var inputCommand = string.Empty;
 
@@ -66,7 +66,9 @@ namespace SocketClientStarter
             }
             finally
             {
-                client.Shutdown(SocketShutdown.Both);
+                if (client.Connected)
+                    client.Shutdown(SocketShutdown.Both);
+                    
                 client.Close();
                 client.Dispose();
             }
