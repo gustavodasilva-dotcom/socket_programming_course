@@ -1,0 +1,16 @@
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\bin\Debug\net5.0\SocketSQL.exe
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\bin\Debug\net5.0\SocketSQL.deps.json
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\bin\Debug\net5.0\SocketSQL.runtimeconfig.json
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\bin\Debug\net5.0\SocketSQL.runtimeconfig.dev.json
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\bin\Debug\net5.0\SocketSQL.dll
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\bin\Debug\net5.0\ref\SocketSQL.dll
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\bin\Debug\net5.0\SocketSQL.pdb
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\obj\Debug\net5.0\SocketSQL.csproj.AssemblyReference.cache
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\obj\Debug\net5.0\SocketSQL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\obj\Debug\net5.0\SocketSQL.AssemblyInfoInputs.cache
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\obj\Debug\net5.0\SocketSQL.AssemblyInfo.cs
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\obj\Debug\net5.0\SocketSQL.csproj.CoreCompileInputs.cache
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\obj\Debug\net5.0\SocketSQL.dll
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\obj\Debug\net5.0\ref\SocketSQL.dll
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\obj\Debug\net5.0\SocketSQL.pdb
+C:\Users\gusta\source\repos\socket_programming_course\SocketSQL\obj\Debug\net5.0\SocketSQL.genruntimeconfig.cache
