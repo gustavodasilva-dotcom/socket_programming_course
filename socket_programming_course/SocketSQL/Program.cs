@@ -58,12 +58,24 @@ namespace SocketSQL
 
                     client.Send(buff);
 
-                    dados.GravarDados(receivedText);
-
                     if (receivedText.ToUpper().Equals("X"))
                         break;
                     
-                    Array.Clear(buff, 0, numReceivedBytes);
+                    var funcionarioId = dados.GravarDados(receivedText);
+
+                    if (funcionarioId != 0)
+                    {
+                        var sendText = $"Funcionário cadastrado! ID: {funcionarioId}.";
+
+                        buff = Encoding.ASCII.GetBytes(sendText);
+
+                        client.Send(buff);
+
+                        Array.Clear(buff, 0, buff.Length);
+                    }
+
+                    if (buff.Length > 0)
+                        Array.Clear(buff, 0, numReceivedBytes);
 
                     numReceivedBytes = 0;
                 }
