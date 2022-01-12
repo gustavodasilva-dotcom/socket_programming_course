@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketAsync.Desktop", "SocketAsync.Desktop\SocketAsync.Desktop.csproj", "{5103ECB1-ECB4-40D9-B67C-FAD0898DCDC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketAsync.Service", "SocketAsync.Service\SocketAsync.Service.csproj", "{EFBFCEEC-1D54-49B9-989B-A0C8C8D5A600}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5103ECB1-ECB4-40D9-B67C-FAD0898DCDC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5103ECB1-ECB4-40D9-B67C-FAD0898DCDC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5103ECB1-ECB4-40D9-B67C-FAD0898DCDC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5103ECB1-ECB4-40D9-B67C-FAD0898DCDC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFBFCEEC-1D54-49B9-989B-A0C8C8D5A600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFBFCEEC-1D54-49B9-989B-A0C8C8D5A600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFBFCEEC-1D54-49B9-989B-A0C8C8D5A600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFBFCEEC-1D54-49B9-989B-A0C8C8D5A600}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DDFDA996-8F70-4A91-BBC3-F7AA4633329C}
+	EndGlobalSection
+EndGlobal

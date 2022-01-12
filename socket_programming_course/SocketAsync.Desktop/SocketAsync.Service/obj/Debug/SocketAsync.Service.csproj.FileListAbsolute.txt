@@ -1,0 +1,6 @@
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Service\bin\Debug\SocketAsync.Service.dll
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Service\bin\Debug\SocketAsync.Service.pdb
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Service\obj\Debug\SocketAsync.Service.csproj.AssemblyReference.cache
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Service\obj\Debug\SocketAsync.Service.csproj.CoreCompileInputs.cache
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Service\obj\Debug\SocketAsync.Service.dll
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Service\obj\Debug\SocketAsync.Service.pdb
