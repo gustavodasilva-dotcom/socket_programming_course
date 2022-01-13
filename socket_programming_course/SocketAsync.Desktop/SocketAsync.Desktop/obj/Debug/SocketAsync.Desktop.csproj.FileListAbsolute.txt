@@ -1,0 +1,13 @@
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Desktop\bin\Debug\SocketAsync.Desktop.exe.config
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Desktop\bin\Debug\SocketAsync.Desktop.exe
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Desktop\bin\Debug\SocketAsync.Desktop.pdb
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Desktop\bin\Debug\SocketAsync.Service.dll
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Desktop\bin\Debug\SocketAsync.Service.pdb
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Desktop\obj\Debug\SocketAsync.Desktop.csproj.AssemblyReference.cache
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Desktop\obj\Debug\SocketAsync.Desktop.MainDesktopSocket.resources
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Desktop\obj\Debug\SocketAsync.Desktop.Properties.Resources.resources
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Desktop\obj\Debug\SocketAsync.Desktop.csproj.GenerateResource.cache
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Desktop\obj\Debug\SocketAsync.Desktop.csproj.CoreCompileInputs.cache
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Desktop\obj\Debug\SocketAsync.Desktop.csproj.CopyComplete
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Desktop\obj\Debug\SocketAsync.Desktop.exe
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Desktop\SocketAsync.Desktop\obj\Debug\SocketAsync.Desktop.pdb
