@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Text;
 using System.Diagnostics;
 using System.Net.Sockets;
+using System.Collections.Generic;
 
 namespace SocketAsync.Service
 {
@@ -12,17 +14,22 @@ namespace SocketAsync.Service
 
         private IPAddress _iPAddress { get; set; }
 
-        public bool KeepRunning { get; set; }
+        private List<TcpClient> _clients { get; set; }
+
+        private bool KeepRunning { get; set; }
 
         private int _port { get; set; }
 
+        public SocketService()
+        {
+            _clients = new List<TcpClient>();
+        }
+
         public async void ListenIncomingConnectionAsync(IPAddress iPAddress = null, int port = 23000)
         {
-            if (iPAddress == null)
-                iPAddress = IPAddress.Any;
+            if (iPAddress == null) iPAddress = IPAddress.Any;
 
-            if (port <= 0)
-                port = 23000;
+            if (port <= 0) port = 23000;
 
             _iPAddress = iPAddress;
             _port = port;
@@ -41,7 +48,11 @@ namespace SocketAsync.Service
                 {
                     var client = await _tcpListener.AcceptTcpClientAsync();
 
+                    _clients.Add(client);
+
                     Debug.WriteLine(string.Format($"Client accepted and connected successfully: {client}"));
+                    Debug.WriteLine(string.Format($"Recent connected client endpoint: {client.Client.RemoteEndPoint}"));
+                    Debug.WriteLine(string.Format($"Client's connected count: {_clients.Count}"));
 
                     HandleTcpClient(client);
                 }
@@ -49,8 +60,38 @@ namespace SocketAsync.Service
             catch (Exception e)
             {
                 Debug.WriteLine(string.Format($"An error occurred: {e.Message}"));
+            }
+        }
 
-                throw;
+        public async void SendToAllAsync(string message)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(message)) return;
+
+                var buff = Encoding.UTF8.GetBytes(message);
+
+                foreach (var client in _clients) client.GetStream().WriteAsync(buff, 0, buff.Length);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(string.Format($"An error occurred: {e.Message}"));
+            }
+        }
+
+        public void StopListeningToConnections()
+        {
+            try
+            {
+                if (_tcpListener != null) _tcpListener.Stop();
+
+                foreach (var client in _clients) client.Close();
+
+                _clients.Clear();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(string.Format($"An error occurred: {e.Message}")); 
             }
         }
 
@@ -74,6 +115,8 @@ namespace SocketAsync.Service
 
                     if (returnedBytes == 0)
                     {
+                        RemoveClient(client);
+
                         Debug.WriteLine(string.Format($"Socket disconnected."));
 
                         break;
@@ -85,6 +128,26 @@ namespace SocketAsync.Service
                     Debug.WriteLine(string.Format(""));
 
                     Array.Clear(buff, 0, buff.Length);
+                }
+            }
+            catch (Exception e)
+            {
+                RemoveClient(client);
+
+                Debug.WriteLine(string.Format($"An error occurred: {e.Message}"));
+            }
+        }
+
+        private void RemoveClient(TcpClient client)
+        {
+            try
+            {
+                if (_clients.Contains(client))
+                {
+                    _clients.Remove(client);
+
+                    Debug.WriteLine(string.Format($"Removed client: {client.Client.RemoteEndPoint}"));
+                    Debug.WriteLine(string.Format($"Client's list count: {_clients.Count}"));
                 }
             }
             catch (Exception e)
