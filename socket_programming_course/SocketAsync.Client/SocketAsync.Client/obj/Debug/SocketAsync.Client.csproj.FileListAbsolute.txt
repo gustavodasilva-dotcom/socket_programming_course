@@ -1,0 +1,10 @@
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Client\SocketAsync.Client\bin\Debug\SocketAsync.Client.exe.config
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Client\SocketAsync.Client\bin\Debug\SocketAsync.Client.exe
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Client\SocketAsync.Client\bin\Debug\SocketAsync.Client.pdb
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Client\SocketAsync.Client\bin\Debug\SocketAsync.Service.dll
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Client\SocketAsync.Client\bin\Debug\SocketAsync.Service.pdb
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Client\SocketAsync.Client\obj\Debug\SocketAsync.Client.csproj.AssemblyReference.cache
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Client\SocketAsync.Client\obj\Debug\SocketAsync.Client.csproj.CoreCompileInputs.cache
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Client\SocketAsync.Client\obj\Debug\SocketAsync.Client.csproj.CopyComplete
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Client\SocketAsync.Client\obj\Debug\SocketAsync.Client.exe
+C:\Users\gusta\source\repos\socket_programming_course\SocketAsync.Client\SocketAsync.Client\obj\Debug\SocketAsync.Client.pdb

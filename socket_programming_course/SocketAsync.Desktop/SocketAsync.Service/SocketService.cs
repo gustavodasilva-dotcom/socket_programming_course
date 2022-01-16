@@ -10,11 +10,11 @@ namespace SocketAsync.Service
 {
     public class SocketService
     {
+        public List<TcpClient> _clients { get; set; }
+
         private TcpListener _tcpListener { get; set; }
 
         private IPAddress _iPAddress { get; set; }
-
-        private List<TcpClient> _clients { get; set; }
 
         private bool KeepRunning { get; set; }
 
