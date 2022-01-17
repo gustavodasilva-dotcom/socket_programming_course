@@ -86,6 +86,39 @@ namespace SocketAsync.Service
             }
         }
 
+        public async Task SendToServer(string input)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(input))
+                {
+                    Console.WriteLine("Cannot send an empty string.");
+
+                    return;
+                }
+
+                if (_tcpClient != null)
+                {
+                    if (_tcpClient.Connected)
+                    {
+                        var streamWriter = new StreamWriter(_tcpClient.GetStream());
+
+                        streamWriter.AutoFlush = true;
+
+                        await streamWriter.WriteAsync(input);
+
+                        Console.WriteLine($"Data sent to the server: {input}");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"The following error occurred: {e.Message}");
+
+                throw;
+            }
+        }
+
         public IPAddress GetIPAddress()
         {
             try

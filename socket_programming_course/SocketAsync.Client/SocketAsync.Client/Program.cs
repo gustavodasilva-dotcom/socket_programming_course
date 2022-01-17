@@ -37,6 +37,11 @@ namespace SocketAsync.Client
                 {
                     Console.Write("Keep running (if not, type <exit>:");
                     input = Console.ReadLine();
+
+                    if (!input.Trim().Equals("<exit>"))
+                    {
+                        socketClient.SendToServer(input);
+                    }
                 }
                 while (!input.Trim().Equals("<exit>"));
             }
