@@ -8,8 +8,12 @@ using System.Collections.Generic;
 
 namespace SocketAsync.Service
 {
-    public class SocketService
+    public class SocketServeService
     {
+        public EventHandler<LogEventArgs> RaiseLogEvent;
+
+        public LogEventArgs LogEvent;
+
         public List<TcpClient> _clients { get; set; }
 
         private TcpListener _tcpListener { get; set; }
@@ -20,9 +24,21 @@ namespace SocketAsync.Service
 
         private int _port { get; set; }
 
-        public SocketService()
+        public SocketServeService()
         {
             _clients = new List<TcpClient>();
+        }
+
+        protected virtual void OnRaiseLogEvent(LogEventArgs e)
+        {
+            try
+            {
+                EventHandler<LogEventArgs> handler = RaiseLogEvent;
+
+                if (handler != null)
+                    handler(this, e);
+            }
+            catch (Exception) { throw; }
         }
 
         public async void ListenIncomingConnectionAsync(IPAddress iPAddress = null, int port = 23000)
@@ -34,7 +50,7 @@ namespace SocketAsync.Service
             _iPAddress = iPAddress;
             _port = port;
 
-            Debug.WriteLine(string.Format($"IP Address: {_iPAddress} - Port: {_port}"));
+            LogDebugAndConsole(string.Format($"IP Address: {_iPAddress} - Port: {_port}"));
 
             _tcpListener = new TcpListener(_iPAddress, _port);
 
@@ -50,16 +66,18 @@ namespace SocketAsync.Service
 
                     _clients.Add(client);
 
-                    Debug.WriteLine(string.Format($"Client accepted and connected successfully: {client}"));
-                    Debug.WriteLine(string.Format($"Recent connected client endpoint: {client.Client.RemoteEndPoint}"));
-                    Debug.WriteLine(string.Format($"Client's connected count: {_clients.Count}"));
+                    LogDebugAndConsole(string.Format($"Client accepted and connected successfully: {client}"));
+                    LogDebugAndConsole(string.Format($"Recent connected client endpoint: {client.Client.RemoteEndPoint}"));
+                    LogDebugAndConsole(string.Format($"Client's connected count: {_clients.Count}"));
 
                     HandleTcpClient(client);
+
+                    LogDebugAndConsole(client.Client.RemoteEndPoint.ToString());
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine(string.Format($"An error occurred: {e.Message}"));
+                LogDebugAndConsole(string.Format($"An error occurred: {e.Message}"));
             }
         }
 
@@ -72,10 +90,13 @@ namespace SocketAsync.Service
                 var buff = Encoding.UTF8.GetBytes(message);
 
                 foreach (var client in _clients) client.GetStream().WriteAsync(buff, 0, buff.Length);
+
+                var eventLog = new LogEventArgs($"Data sent: {message}");
+                OnRaiseLogEvent(eventLog);
             }
             catch (Exception e)
             {
-                Debug.WriteLine(string.Format($"An error occurred: {e.Message}"));
+                LogDebugAndConsole(string.Format($"An error occurred: {e.Message}"));
             }
         }
 
@@ -91,7 +112,7 @@ namespace SocketAsync.Service
             }
             catch (Exception e)
             {
-                Debug.WriteLine(string.Format($"An error occurred: {e.Message}")); 
+                LogDebugAndConsole(string.Format($"An error occurred: {e.Message}"));
             }
         }
 
@@ -107,25 +128,24 @@ namespace SocketAsync.Service
 
                 while (KeepRunning)
                 {
-                    Debug.WriteLine(string.Format("Ready to read data."));
+                    LogDebugAndConsole("Ready to read data.");
 
                     var returnedBytes = await reader.ReadAsync(buff, 0, buff.Length);
 
-                    Debug.WriteLine(string.Format($"Returned bytes: {returnedBytes}."));
+                    LogDebugAndConsole($"Returned bytes: {returnedBytes}.");
 
                     if (returnedBytes == 0)
                     {
                         RemoveClient(client);
 
-                        Debug.WriteLine(string.Format($"Socket disconnected."));
+                        LogDebugAndConsole($"Socket disconnected.");
 
                         break;
                     }
 
                     var receivedText = new string(buff);
 
-                    Debug.WriteLine(string.Format($"Received value: {receivedText}"));
-                    Debug.WriteLine(string.Format(""));
+                    LogDebugAndConsole(string.Format($"Received value: {receivedText}"));
 
                     Array.Clear(buff, 0, buff.Length);
                 }
@@ -134,7 +154,7 @@ namespace SocketAsync.Service
             {
                 RemoveClient(client);
 
-                Debug.WriteLine(string.Format($"An error occurred: {e.Message}"));
+                LogDebugAndConsole(string.Format($"An error occurred: {e.Message}"));
             }
         }
 
@@ -146,13 +166,33 @@ namespace SocketAsync.Service
                 {
                     _clients.Remove(client);
 
-                    Debug.WriteLine(string.Format($"Removed client: {client.Client.RemoteEndPoint}"));
-                    Debug.WriteLine(string.Format($"Client's list count: {_clients.Count}"));
+                    LogDebugAndConsole($"Removed client: {client.Client.RemoteEndPoint}");
+
+                    LogDebugAndConsole($"Client's list count: {_clients.Count}");
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine(string.Format($"An error occurred: {e.Message}"));
+                LogDebugAndConsole(string.Format($"An error occurred: {e.Message}"));
+            }
+        }
+
+        private void LogDebugAndConsole(string log)
+        {
+            try
+            {
+                if (LogEvent == null)
+                    LogEvent = new LogEventArgs(log);
+                else
+                    LogEvent.Log = log;
+
+                Debug.WriteLine(log);
+
+                OnRaiseLogEvent(LogEvent);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine($"An error occurred: {e.Message}");
             }
         }
     }

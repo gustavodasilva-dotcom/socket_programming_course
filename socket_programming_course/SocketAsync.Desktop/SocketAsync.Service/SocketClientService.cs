@@ -119,6 +119,21 @@ namespace SocketAsync.Service
             }
         }
 
+        public void CloseAndDisconnect()
+        {
+            try
+            {
+                if (_tcpClient != null)
+                {
+                    if (_tcpClient.Connected)
+                    {
+                        _tcpClient.Close();
+                    }
+                }
+            }
+            catch (Exception) { throw; }
+        }
+
         public IPAddress GetIPAddress()
         {
             try

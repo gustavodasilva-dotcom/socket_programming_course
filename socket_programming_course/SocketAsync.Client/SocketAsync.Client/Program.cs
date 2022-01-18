@@ -42,6 +42,10 @@ namespace SocketAsync.Client
                     {
                         socketClient.SendToServer(input);
                     }
+                    else
+                    {
+                        socketClient.CloseAndDisconnect();
+                    }
                 }
                 while (!input.Trim().Equals("<exit>"));
             }

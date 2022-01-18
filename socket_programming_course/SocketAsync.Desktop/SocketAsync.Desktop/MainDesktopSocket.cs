@@ -6,21 +6,21 @@ namespace SocketAsync.Desktop
 {
     public partial class MainDesktopSocket : Form
     {
-        private readonly SocketService _socketService;
+        private readonly SocketServeService _socketService;
 
         public MainDesktopSocket()
         {
             InitializeComponent();
 
-            _socketService = new SocketService();
+            _socketService = new SocketServeService();
+
+            _socketService.RaiseLogEvent += HandlerLog;
         }
 
         private void btnAcceptIncConn_Click(object sender, EventArgs e)
         {
             try
             {
-                MessageBox.Show($"Listening for incoming connections.");
-
                 _socketService.ListenIncomingConnectionAsync();
             }
             catch (Exception ex)
@@ -35,8 +35,6 @@ namespace SocketAsync.Desktop
             {
                 _socketService.SendToAllAsync(textBoxMessage.Text.Trim());
 
-                MessageBox.Show($"Data sent: {textBoxMessage.Text.Trim()}");
-
                 textBoxMessage.Clear();
             }
             catch (Exception ex)
@@ -50,8 +48,6 @@ namespace SocketAsync.Desktop
             try
             {
                 _socketService.StopListeningToConnections();
-
-                MessageBox.Show("TCP listener stoped.");
             }
             catch (Exception ex)
             {
@@ -64,8 +60,19 @@ namespace SocketAsync.Desktop
             try
             {
                 _socketService.StopListeningToConnections();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
 
-                MessageBox.Show("TCP listener stoped.");
+        void HandlerLog(object sender, LogEventArgs e)
+        {
+            try
+            {
+                textBoxConsole.AppendText(string.Format($"{DateTime.Now} - {e.Log}"));
+                textBoxConsole.AppendText(Environment.NewLine);
             }
             catch (Exception ex)
             {

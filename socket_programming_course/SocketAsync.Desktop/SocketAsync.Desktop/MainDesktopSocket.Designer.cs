@@ -34,13 +34,14 @@ namespace SocketAsync.Desktop
             this.textBoxMessage = new System.Windows.Forms.TextBox();
             this.btnSendToAll = new System.Windows.Forms.Button();
             this.btnStopListeningConn = new System.Windows.Forms.Button();
+            this.textBoxConsole = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnAcceptIncConn
             // 
             this.btnAcceptIncConn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAcceptIncConn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAcceptIncConn.Location = new System.Drawing.Point(211, 37);
+            this.btnAcceptIncConn.Location = new System.Drawing.Point(281, 192);
             this.btnAcceptIncConn.Name = "btnAcceptIncConn";
             this.btnAcceptIncConn.Size = new System.Drawing.Size(204, 48);
             this.btnAcceptIncConn.TabIndex = 0;
@@ -53,7 +54,7 @@ namespace SocketAsync.Desktop
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(128, 204);
+            this.label1.Location = new System.Drawing.Point(198, 359);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 16);
             this.label1.TabIndex = 1;
@@ -62,7 +63,7 @@ namespace SocketAsync.Desktop
             // textBoxMessage
             // 
             this.textBoxMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxMessage.Location = new System.Drawing.Point(211, 203);
+            this.textBoxMessage.Location = new System.Drawing.Point(281, 358);
             this.textBoxMessage.Name = "textBoxMessage";
             this.textBoxMessage.Size = new System.Drawing.Size(184, 20);
             this.textBoxMessage.TabIndex = 2;
@@ -70,7 +71,7 @@ namespace SocketAsync.Desktop
             // btnSendToAll
             // 
             this.btnSendToAll.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSendToAll.Location = new System.Drawing.Point(416, 195);
+            this.btnSendToAll.Location = new System.Drawing.Point(486, 350);
             this.btnSendToAll.Name = "btnSendToAll";
             this.btnSendToAll.Size = new System.Drawing.Size(118, 35);
             this.btnSendToAll.TabIndex = 3;
@@ -82,7 +83,7 @@ namespace SocketAsync.Desktop
             // 
             this.btnStopListeningConn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnStopListeningConn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStopListeningConn.Location = new System.Drawing.Point(225, 116);
+            this.btnStopListeningConn.Location = new System.Drawing.Point(295, 271);
             this.btnStopListeningConn.Name = "btnStopListeningConn";
             this.btnStopListeningConn.Size = new System.Drawing.Size(171, 48);
             this.btnStopListeningConn.TabIndex = 4;
@@ -90,11 +91,21 @@ namespace SocketAsync.Desktop
             this.btnStopListeningConn.UseVisualStyleBackColor = true;
             this.btnStopListeningConn.Click += new System.EventHandler(this.btnStopListeningConn_Click);
             // 
+            // textBoxConsole
+            // 
+            this.textBoxConsole.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxConsole.Location = new System.Drawing.Point(112, 24);
+            this.textBoxConsole.Multiline = true;
+            this.textBoxConsole.Name = "textBoxConsole";
+            this.textBoxConsole.Size = new System.Drawing.Size(559, 141);
+            this.textBoxConsole.TabIndex = 5;
+            // 
             // MainDesktopSocket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 341);
+            this.ClientSize = new System.Drawing.Size(776, 422);
+            this.Controls.Add(this.textBoxConsole);
             this.Controls.Add(this.btnStopListeningConn);
             this.Controls.Add(this.btnSendToAll);
             this.Controls.Add(this.textBoxMessage);
@@ -115,6 +126,7 @@ namespace SocketAsync.Desktop
         private System.Windows.Forms.TextBox textBoxMessage;
         private System.Windows.Forms.Button btnSendToAll;
         private System.Windows.Forms.Button btnStopListeningConn;
+        private System.Windows.Forms.TextBox textBoxConsole;
     }
 }
 
