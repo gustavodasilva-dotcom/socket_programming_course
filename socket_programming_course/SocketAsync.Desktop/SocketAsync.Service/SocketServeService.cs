@@ -147,6 +147,8 @@ namespace SocketAsync.Service
 
                     LogDebugAndConsole(string.Format($"Received value: {receivedText}"));
 
+                    LogDebugAndConsole(string.Format($"Sent by: {client.Client.RemoteEndPoint}"));
+
                     Array.Clear(buff, 0, buff.Length);
                 }
             }

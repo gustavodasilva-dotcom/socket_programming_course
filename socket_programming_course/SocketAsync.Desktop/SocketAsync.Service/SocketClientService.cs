@@ -2,13 +2,14 @@
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace SocketAsync.Service
 {
     public class SocketClientService
     {
+        public EventHandler<LogEventArgs> RaiseLogEvent;
+
         private IPAddress _ipAddress { get; set; }
 
         private TcpClient _tcpClient { get; set; }
@@ -24,6 +25,18 @@ namespace SocketAsync.Service
             _tcpClient = null;
         }
 
+        protected virtual void OnRaiseLogEvent(LogEventArgs e)
+        {
+            try
+            {
+                EventHandler<LogEventArgs> handler = RaiseLogEvent;
+
+                if (handler != null)
+                    handler(this, e);
+            }
+            catch (Exception) { throw; }
+        }
+
         public async Task ConnectToServerAsync()
         {
             try
@@ -33,13 +46,13 @@ namespace SocketAsync.Service
 
                 await _tcpClient.ConnectAsync(_ipAddress, _port);
 
-                Console.WriteLine($"Connected to server: {_ipAddress} : {_port}");
+                OnRaiseLogEvent(new LogEventArgs($"Connected to server: {_ipAddress} : {_port}"));
 
                 await ReadDataAsync();
             }
             catch (Exception e)
             {
-                Debug.WriteLine($"The following error occurred: {e.Message}");
+                OnRaiseLogEvent(new LogEventArgs($"The following error occurred: {e.Message}"));
 
                 throw;
             }
@@ -65,22 +78,23 @@ namespace SocketAsync.Service
 
                     if (byteCount <= 0)
                     {
-                        Console.WriteLine("The connection has been broken by the server.");
+                        OnRaiseLogEvent(new LogEventArgs("The connection has been broken by the server."));
                         
                         _tcpClient.Close();
 
                         break;
                     }
 
-                    Console.WriteLine($"Received text from the server: {new string(buff)}");
-                    Console.WriteLine($"Byte count: {byteCount}.");
+                    OnRaiseLogEvent(new LogEventArgs($"Received text from the server: {new string(buff)}"));
+                    OnRaiseLogEvent(new LogEventArgs($"Byte count: {byteCount}."));
+                    OnRaiseLogEvent(new LogEventArgs($"Received text from {_tcpClient.Client.RemoteEndPoint}: {new string(buff)}"));
 
                     Array.Clear(buff, 0, buff.Length);
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine($"The following error occurred: {e.Message}");
+                OnRaiseLogEvent(new LogEventArgs($"The following error occurred: {e.Message}"));
 
                 throw;
             }
@@ -92,7 +106,7 @@ namespace SocketAsync.Service
             {
                 if (string.IsNullOrEmpty(input))
                 {
-                    Console.WriteLine("Cannot send an empty string.");
+                    OnRaiseLogEvent(new LogEventArgs("Cannot send an empty string."));
 
                     return;
                 }
@@ -107,13 +121,13 @@ namespace SocketAsync.Service
 
                         await streamWriter.WriteAsync(input);
 
-                        Console.WriteLine($"Data sent to the server: {input}");
+                        OnRaiseLogEvent(new LogEventArgs($"Data sent to the server: {input}"));
                     }
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine($"The following error occurred: {e.Message}");
+                OnRaiseLogEvent(new LogEventArgs($"The following error occurred: {e.Message}"));
 
                 throw;
             }
@@ -158,7 +172,7 @@ namespace SocketAsync.Service
             {
                 if (!IPAddress.TryParse(ip, out IPAddress ipAddress))
                 {
-                    Console.WriteLine("Invalid server IP supplied.");
+                    OnRaiseLogEvent(new LogEventArgs("Invalid server IP supplied."));
 
                     return false;
                 }
@@ -176,14 +190,14 @@ namespace SocketAsync.Service
             {
                 if (!int.TryParse(serverPort.Trim(), out int portNumber))
                 {
-                    Console.WriteLine("Invalid port number supplied.");
+                    OnRaiseLogEvent(new LogEventArgs("Invalid port number supplied."));
 
                     return false;
                 }
 
                 if (portNumber <= 0 || portNumber > 65535)
                 {
-                    Console.WriteLine("Port number must be between 0 and 65535.");
+                    OnRaiseLogEvent(new LogEventArgs("Port number must be between 0 and 65535."));
 
                     return false;
                 }

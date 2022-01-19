@@ -10,6 +10,8 @@ namespace SocketAsync.Client
             try
             {
                 var socketClient = new SocketClientService();
+                
+                socketClient.RaiseLogEvent += HandlerTextReceivedEvent;
 
                 Console.Write("Please, type a valid server IP Address and press Enter: ");
                 var setIp = socketClient.SetServerIPAddress(Console.ReadLine());
@@ -35,7 +37,7 @@ namespace SocketAsync.Client
 
                 do
                 {
-                    Console.Write("Keep running (if not, type <exit>:");
+                    Console.Write("Keep running (if not, type <exit>: ");
                     input = Console.ReadLine();
 
                     if (!input.Trim().Equals("<exit>"))
@@ -53,6 +55,16 @@ namespace SocketAsync.Client
             {
                 Console.WriteLine($"The following error occurred: {e.Message}");
             }
+        }
+
+        private static void HandlerTextReceivedEvent(object sender, LogEventArgs e)
+        {
+            try
+            {
+                Console.WriteLine(string.Format($"{DateTime.Now} - {e.Log}"));
+                Console.WriteLine(Environment.NewLine);
+            }
+            catch (Exception) { throw; }
         }
     }
 }
