@@ -37,6 +37,26 @@ namespace SocketAsync.Service
             catch (Exception) { throw; }
         }
 
+        public IPAddress ConvertHostnameToIPAddress(string hostname)
+        {
+            try
+            {
+                var ips = Dns.GetHostAddresses(hostname);
+
+                foreach (var ip in ips)
+                {
+                    if (ip.AddressFamily.Equals(AddressFamily.InterNetwork))
+                        return ip;
+                }
+            }
+            catch (Exception e)
+            {
+                OnRaiseLogEvent(new LogEventArgs($"The following error occurred: {e.Message}"));
+            }
+
+            return null;
+        }
+
         public async Task ConnectToServerAsync()
         {
             try

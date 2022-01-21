@@ -14,12 +14,26 @@ namespace SocketAsync.Client
                 socketClient.RaiseLogEvent += HandlerTextReceivedEvent;
 
                 Console.Write("Please, type a valid server IP Address and press Enter: ");
-                var setIp = socketClient.SetServerIPAddress(Console.ReadLine());
+                var setIp = Console.ReadLine();
 
                 Console.Write("Please, type a valid port number and press Enter: ");
-                var setPort = socketClient.SetPortNumber(Console.ReadLine());
+                var setPort = Console.ReadLine();
 
-                if (!setIp || !setPort)
+                if (setIp.StartsWith("<HOST>"))
+                {
+                    setIp = setIp.Replace("<HOST>", string.Empty);
+
+                    setIp = Convert.ToString(socketClient.ConvertHostnameToIPAddress(setIp));
+                }
+
+                if (string.IsNullOrEmpty(setIp))
+                {
+                    Console.WriteLine($"No IP address found to hostname {setIp}.");
+
+                    Environment.Exit(0);
+                }
+
+                if (!socketClient.SetServerIPAddress(setIp) || !socketClient.SetPortNumber(setPort))
                 {
                     Console.WriteLine(string.Format("The IP Address or Port Number supplied is invalid."));
                     Console.WriteLine(string.Format("Press a key to exit..."));
